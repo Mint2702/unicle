@@ -3,7 +3,6 @@
 <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
           <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -15,8 +14,21 @@
                               <div id="DM">
                                         <a href="#">Mint Production</a>
                               </div>
+                              <div>
+                                        <a href="/login">Login</a>
+                              </div>
                     </div>
           </header>
+          <hr>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+          </ul>
+          {% endif %}
+          {% endwith %}
           <div id="middle">
                     {% block content %}{% endblock %}
           </div>
